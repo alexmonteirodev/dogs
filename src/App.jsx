@@ -5,7 +5,7 @@ const App = () => {
 
   return (
     <>
-      <div>teste</div>
+      <div>App React</div>
     </>
   );
 };
