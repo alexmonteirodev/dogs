@@ -3,28 +3,45 @@ import { Link } from "react-router-dom";
 import Input from "../forms/Input";
 import Button from "../forms/Button";
 import useForm from "../../Hooks/useForm";
+import { TOKEN_POST, USER_GET } from "../../api";
 
 const LoginForm = () => {
   const username = useForm(); //retorna value, setValue e onChange
   const password = useForm();
 
+  //tenta login caso tenha um token já salvo
+  React.useEffect((params) => {
+    const tokenAtivo = window.localStorage.getItem("token");
+    if (tokenAtivo) {
+      getUser(tokenAtivo);
+    }
+  }, []);
+
+  function getUser(token) {
+    const { url, options } = USER_GET(token);
+
+    fetch(url, options)
+      .then((r) => r.json())
+      .then((json) => {
+        console.log(json);
+      });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
     if (username.validate() && password.validate()) {
-      fetch("https://dogsapi.origamid.dev/json/jwt-auth/v1/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      })
-        .then((r) => {
-          console.log(r);
-          return r.json();
-        })
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+
+      fetch(url, options)
+        .then((r) => r.json())
         .then((json) => {
+          window.localStorage.setItem("token", json.token);
           console.log(json);
+          getUser(json.token);
         });
     }
   }
