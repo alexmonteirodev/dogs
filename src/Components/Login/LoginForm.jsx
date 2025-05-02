@@ -9,7 +9,7 @@ const LoginForm = () => {
   const username = useForm(); //retorna value, setValue e onChange
   const password = useForm();
 
-  const { userLogin } = React.useContext(UserContext);
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,7 +25,13 @@ const LoginForm = () => {
       <form action="" onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Enviar</Button>
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Enviar</Button>
+        )}
+
+        {error && <p>{error}</p>}
       </form>
       <Link to="/login/criar">Cadastro</Link>
     </section>
