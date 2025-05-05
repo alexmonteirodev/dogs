@@ -1,0 +1,12 @@
+.comments {
+  overflow-y: auto;
+
+  /* overflow-y: auto - cria barra de scroll pra conter todos os itens dentro dele */
+  word-break: break-word;
+  padding: 0 2rem;
+}
+
+.comments li {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
