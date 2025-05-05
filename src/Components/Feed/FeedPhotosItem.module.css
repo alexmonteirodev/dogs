@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 /* grid-area 1/1 igual para que img e span ocupem o mesmo lugar */
-.photo img {
+.photo > div {
   grid-area: 1/1;
 }
 .visualizacao {
