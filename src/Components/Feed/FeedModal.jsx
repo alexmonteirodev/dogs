@@ -26,7 +26,7 @@ const FeedModal = ({ photo, setModalPhoto }) => {
   return (
     <div className={styles.modal} onClick={handleOutsideClick}>
       {error && <Error error={error} />}
-      {Loading && <Loading />}
+      {loading && <Loading />}
       {data && <PhotoContent data={data} />}
     </div>
   );
