@@ -22,8 +22,11 @@ const FeedPhotos = ({ user, page, setInfinite, setModalPhoto }) => {
     fetchPhotos();
   }, [request, user, page, setInfinite]);
   // obs: se o json.legth for < 3 significa que não tem mais foto pra puxar, pq só mostra 3 fotos por pagina, logo, chegou na última pagina
+  console.log(data);
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
+  if (data && data.length === 0)
+    return <p className="noPhotos">Você ainda não possui nenhuma foto.</p>;
   if (data)
     return (
       <ul className={`${styles.feed} animeLeft`}>
