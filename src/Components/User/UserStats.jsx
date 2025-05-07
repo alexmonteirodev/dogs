@@ -4,7 +4,7 @@ import useFetch from "../../Hooks/useFetch";
 import Loading from "../Helper/Loading";
 import Error from "../Helper/Error";
 import { STATS_GET } from "../../api";
-import UserStatsGraphs from "./UserStatsGraphs";
+const UserStatsGraphs = React.lazy(() => import("./UserStatsGraphs"));
 
 const UserStats = () => {
   const { data, error, loading, request } = useFetch();
@@ -22,13 +22,13 @@ const UserStats = () => {
   if (error) return <Error error={error} />;
   if (data)
     return (
-      <div>
+      <React.Suspense fallback={<div></div>}>
         <Head
           title="Estatísticas"
           description="Home do site dogs, com o feed de fotos."
         />
         <UserStatsGraphs data={data} />
-      </div>
+      </React.Suspense>
     );
   else return null;
 };

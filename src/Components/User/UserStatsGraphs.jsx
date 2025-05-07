@@ -8,7 +8,9 @@ const UserStatsGraphs = ({ data }) => {
 
   React.useEffect(() => {
     // console.log(data.map(({ acessos }) => acessos).reduce((a, b) => a + b));
-    setTotal(data.map(({ acessos }) => acessos).reduce((a, b) => a + b, 0));
+    setTotal(
+      data.map(({ acessos }) => Number(acessos)).reduce((a, b) => a + b, 0)
+    );
 
     const graphData = data.map((item) => {
       return {
