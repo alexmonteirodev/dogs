@@ -18,6 +18,7 @@
 }
 .login {
   color: #333;
+  display: flex;
   align-items: center;
 }
 .login::after {
