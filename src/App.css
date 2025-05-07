@@ -82,3 +82,13 @@ a {
   border-radius: 0.2rem;
   z-index: -1;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+  /* 10rem do footer que é fixo */
+}
+.AppBody {
+  flex: 1;
+}
