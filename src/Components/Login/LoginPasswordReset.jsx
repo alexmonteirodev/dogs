@@ -39,7 +39,7 @@ const LoginPasswordReset = () => {
   }
 
   return (
-    <div>
+    <section className="animeLeft">
       <Head
         title="Resete a senha"
         description="Home do site dogs, com o feed de fotos."
@@ -59,7 +59,7 @@ const LoginPasswordReset = () => {
         )}
       </form>
       <Error error={error} />
-    </div>
+    </section>
   );
 };
 
