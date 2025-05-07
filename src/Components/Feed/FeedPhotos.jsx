@@ -26,7 +26,7 @@ const FeedPhotos = ({ user, page, setInfinite, setModalPhoto }) => {
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
   if (data && data.length === 0)
-    return <p className="noPhotos">Você ainda não possui nenhuma foto.</p>;
+    return <p className={styles.noPhotos}>Não há novas postagens.</p>;
   if (data)
     return (
       <ul className={`${styles.feed} animeLeft`}>

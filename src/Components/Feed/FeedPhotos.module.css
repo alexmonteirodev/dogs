@@ -11,5 +11,9 @@
   }
 }
 .noPhotos {
-  color: #333333;
+  color: #3333338b;
+  font-style: italic;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
